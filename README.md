@@ -42,7 +42,7 @@ This repository manages Kubernetes manifests, and continuous deployment based on
 
 ---
 
-## Snapshots of Application
+## Snapshots of CI Part
 
 ### Jenkins CI Pipeline  
 ![Jenkins Pipeline](https://raw.githubusercontent.com/b-v-krishna/Multi-Tier-BankApp-CI/main/src/main/resources/templates/jenkins_pipeline.png)
