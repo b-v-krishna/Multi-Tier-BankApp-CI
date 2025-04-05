@@ -1,14 +1,12 @@
 #  Multi-Tier Bank Application with DevOps Lifecycle
 
-This repository showcases a Java-based multi-tier banking application integrated into a full DevOps lifecycle with Continuous Integration (CI), code quality enforcement, security scanning, and artifact management.
+This repository demonstrates a Java-based multi-tier banking application integrated with a complete DevOps workflow, including CI, code quality analysis, security scanning, and artifact management.
 
----
 
 ##  Infrastructure Provisioning
 
-> For Infrastructure setup Refer the below repo  
+For Infrastructure setup Refer the below repo  
 👉 [DevOps Infrastructure Setup](https://github.com/b-v-krishna/EKS-Terraform)
----
 
 ## Continuous Integration (CI)
 
@@ -25,7 +23,7 @@ Jenkins pipeline automates:
 
 ##  Continuous Deployment (CD)
 
-> Deployment automation and GitOps workflows are handled in:  
+> For Deployment and CD part refer the below repo:  
 👉 [CD/GitOps Repository](https://github.com/b-v-krishna/Multi-Tier-BankApp-CD)
 
 This repository manages Kubernetes manifests, and continuous deployment based on versioned Docker images.
