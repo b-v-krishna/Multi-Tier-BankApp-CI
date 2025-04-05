@@ -1,0 +1,139 @@
+pipeline {
+    agent any
+
+    parameters {
+        string(name: 'DOCKER_TAG', defaultValue: 'latest')
+    }
+
+    tools {
+        maven 'maven3'
+    }
+
+    environment {
+        SCANNER_HOME = tool 'sonar-scanner'
+    }
+
+    stages {
+        stage('Clean workspace') {
+            steps {
+                cleanWs()
+            }
+        }
+       
+        stage('Git Checkout') {
+            steps {
+                git branch: 'main', credentialsId: 'git-cred', url: 'https://github.com/b-v-krishna/Multi-Tier-BankApp-CI.git'
+            }
+        }
+
+        stage('Compile') {
+            steps {
+                sh 'mvn compile'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                sh 'mvn test -DskipTests=true'
+            }
+        }
+
+        stage('Trivy file system scan') {
+            steps {
+                sh 'trivy fs --format table -o fs.html .'
+            }
+        }
+
+        stage('Sonar Analysis') {
+            steps {
+                withSonarQubeEnv('sonar') {
+                    sh '''
+                        $SCANNER_HOME/bin/sonar-scanner \
+                        -Dsonar.projectName=bankapp \
+                        -Dsonar.projectKey=bankapp \
+                        -Dsonar.java.binaries=target
+                    '''
+                }
+            }
+        }
+
+        stage('Build & Publish Nexus') {
+            steps {
+                withMaven(globalMavenSettingsConfig: 'maven-settings-bhanu', maven: 'maven3', traceability: true) {
+                    sh 'mvn deploy -DskipTests=true'
+                }
+            }
+        }
+
+        stage('Docker Build') {
+            steps {
+                script {
+                    withDockerRegistry(credentialsId: 'docker-cred') {
+                        sh "docker build -t bvkrishnakaturi7844/bankapp:${params.DOCKER_TAG} ."
+                    }
+                }
+            }
+        }
+
+        stage('Docker Image scan') {
+            steps {
+                sh "trivy image --format table -o image.html bvkrishnakaturi7844/bankapp:${params.DOCKER_TAG}"
+            }
+        }
+
+        stage('Docker Push') {
+            steps {
+                script {
+                    withDockerRegistry(credentialsId: 'docker-cred') {
+                        sh "docker push bvkrishnakaturi7844/bankapp:${params.DOCKER_TAG}"
+                    }
+                }
+            }
+        }
+
+        stage('Update YAML Manifest Repo') {
+            steps {
+                script {
+                    withCredentials([gitUsernamePassword(credentialsId: 'git-cred', gitToolName: 'Default')]) {
+                        sh '''
+                            # Clone the repo
+                            git clone https://github.com/b-v-krishna/Multi-Tier-BankApp-CD.git
+                            cd Multi-Tier-BankApp-CD
+
+                            # List files to confirm the presence of bankapp-ds.yml
+                            ls -l bankapp
+
+                            # Get the absolute path for the current directory
+                            repo_dir=$(pwd)
+
+                            # Use the absolute path for sed
+                            sed -i "s|image: bvkrishnakaturi7844/bankapp:.*|image: bvkrishnakaturi7844/bankapp:${DOCKER_TAG}|" ${repo_dir}/bankapp/bankapp-ds.yml
+                        '''
+
+                        // Confirm the change
+                        sh '''
+                            echo "Updated YAML file contents:"
+                            cat Multi-Tier-BankApp-CD/bankapp/bankapp-ds.yml
+                        '''
+
+                        // Configure Git for committing changes and pushing
+                        sh '''
+                            cd Multi-Tier-BankApp-CD
+                            git config user.email "bvkrishnakaturi7844@gmail.com"
+                            git config user.name "Bhanu Katuri"
+                        '''
+
+                        // Commit and push the updated YAML file
+                        sh '''
+                            cd Multi-Tier-BankApp-CD
+                            git add bankapp/bankapp-ds.yml
+                            git commit -m "Update image tag to ${DOCKER_TAG}"
+                            git push origin main
+                        '''
+                    }
+                }
+            }
+        }
+
+    }
+}
