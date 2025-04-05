@@ -6,11 +6,8 @@ This repository showcases a Java-based multi-tier banking application integrated
 
 ##  Infrastructure Provisioning
 
-> ⚙️ Infrastructure setup (Jenkins, Nexus, SonarQube, Docker, etc.) is handled in a separate repository:  
+> For Infrastructure setup Refer the below repo  
 👉 [DevOps Infrastructure Setup](https://github.com/b-v-krishna/EKS-Terraform)
-
-This includes provisioning tools, setting up integrations, RBAC, and installing necessary plugins.
-
 ---
 
 ## Continuous Integration (CI)
@@ -66,3 +63,7 @@ This repository manages Kubernetes manifests, and continuous deployment based on
 ![Sonar Analysis](https://raw.githubusercontent.com/b-v-krishna/Multi-Tier-BankApp-CI/main/src/main/resources/templates/Sonar_Analysis.png)
 
 ---
+
+# License
+
+This project is licensed under the MIT License.
