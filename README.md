@@ -1,4 +1,4 @@
-#  Multi-Tier Bank Application with DevOps Lifecycle
+#  End-to-End DevOps Workflow for a Multi-Tier Java Bank App
 
 This repository demonstrates a Java-based multi-tier banking application integrated with a complete DevOps workflow, including CI, code quality analysis, security scanning, and artifact management.
 
