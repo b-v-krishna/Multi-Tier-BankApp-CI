@@ -49,7 +49,7 @@ This repository manages Kubernetes manifests, and continuous deployment based on
 
 ---
 
-### Nexus Artifact Repository  
+### Nexus Artifactory  
 ![Nexus Artifactory](https://raw.githubusercontent.com/b-v-krishna/Multi-Tier-BankApp-CI/main/src/main/resources/templates/Artifactory.png)
 
 ---
