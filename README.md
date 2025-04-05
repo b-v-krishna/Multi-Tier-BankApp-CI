@@ -38,7 +38,7 @@ This repository manages Kubernetes manifests, and continuous deployment based on
 | Security Scanning        | Trivy                  |
 | Artifact Repository      | Nexus 3                |
 | Containerization         | Docker                 |
-| IaC / Provisioning       | Shell Scripts / YAML   |
+
 
 ---
 
