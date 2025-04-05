@@ -6,7 +6,7 @@ This repository demonstrates a Java-based multi-tier banking application integra
 ##  Infrastructure Provisioning
 
 For Infrastructure setup Refer the below repo  
-👉 [DevOps Infrastructure Setup](https://github.com/b-v-krishna/EKS-Terraform)
+👉 [Infrastructure Setup](https://github.com/b-v-krishna/EKS-Terraform)
 
 ## Continuous Integration (CI)
 
@@ -24,7 +24,7 @@ Jenkins pipeline automates:
 ##  Continuous Deployment (CD)
 
 > For Deployment and CD part refer the below repo:  
-👉 [CD/GitOps Repository](https://github.com/b-v-krishna/Multi-Tier-BankApp-CD)
+👉 [CD Repository](https://github.com/b-v-krishna/Multi-Tier-BankApp-CD)
 
 This repository manages Kubernetes manifests, and continuous deployment based on versioned Docker images.
 
