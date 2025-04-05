@@ -19,16 +19,13 @@ Jenkins pipeline automates:
 - Docker image build and push to registry
 - Artifact deployment to Nexus
 
----
-
 ##  Continuous Deployment (CD)
 
-> For Deployment and CD part refer the below repo:  
+ For Deployment and CD part refer the below repo:  
 👉 [CD Repository](https://github.com/b-v-krishna/Multi-Tier-BankApp-CD)
 
 This repository manages Kubernetes manifests, and continuous deployment based on versioned Docker images.
 
----
 
 ## Tools Explored
 
