@@ -54,7 +54,7 @@ This repository manages Kubernetes manifests, and continuous deployment based on
 
 ---
 
-### SonarQube Code Analysis  
+### Sonar Analysis  
 ![Sonar Analysis](https://raw.githubusercontent.com/b-v-krishna/Multi-Tier-BankApp-CI/main/src/main/resources/templates/Sonar_Analysis.png)
 
 ---
