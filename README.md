@@ -21,18 +21,13 @@ Jenkins pipeline automates:
 
 ## Tools Explored
 
-| Purpose                  | Tool / Technology     |
-|--------------------------|------------------------|
-| Source Control           | GitHub                 |
-| Build Tool               | Maven                  |
-| CI/CD Engine             | Jenkins                |
-| Code Quality             | SonarQube              |
-| Security Scanning        | Trivy                  |
-| Artifact Repository      | Nexus 3                |
-| Containerization         | Docker                 |
-
-
----
+- **Source Control:** GitHub  
+- **Build Tool:** Maven  
+- **CI/CD Engine:** Jenkins  
+- **Code Quality:** SonarQube  
+- **Security Scanning:** Trivy  
+- **Artifact Repository:** Nexus 3  
+- **Containerization:** Docker
 
 ## Snapshots of CI Part
 
