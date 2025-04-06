@@ -16,8 +16,8 @@ Jenkins pipeline automates:
 - Maven-based build and unit tests
 - Static code analysis using SonarQube
 - Vulnerability scans via Trivy
-- Docker image build and push to registry
 - Artifact deployment to Nexus
+- Docker image build and push to registry
 
 ## Tools Explored
 
